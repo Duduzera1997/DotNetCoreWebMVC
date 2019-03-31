@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreWebMVC.Models;
+using DotNetCoreWebMVC.Data;
 
 namespace DotNetCoreWebMVC
 {
@@ -38,14 +39,16 @@ namespace DotNetCoreWebMVC
 
             services.AddDbContext<DotNetCoreWebMVCContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("DotNetCoreWebMVCContext")));
-        }
+            services.AddScoped<SeedingService>();
+        }   
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
