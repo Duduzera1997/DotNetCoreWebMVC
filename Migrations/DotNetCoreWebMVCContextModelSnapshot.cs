@@ -58,7 +58,7 @@ namespace DotNetCoreWebMVC.Migrations
 
                     b.Property<double>("BaseSalary");
 
-                    b.Property<DateTime>("BirtDate");
+                    b.Property<DateTime>("BirthDate");
 
                     b.Property<int?>("DepartmentId");
 

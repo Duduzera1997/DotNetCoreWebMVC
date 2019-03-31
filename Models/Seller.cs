@@ -10,7 +10,7 @@ namespace DotNetCoreWebMVC.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public DateTime BirtDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
@@ -21,7 +21,7 @@ namespace DotNetCoreWebMVC.Models
             this.Id = id;
             this.Name = name;
             this.Email = email;
-            this.BirtDate = birthDate;
+            this.BirthDate = birthDate;
             this.BaseSalary = baseSalary;
             this.Department = department;
         }

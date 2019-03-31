@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreWebMVC.Models;
 using DotNetCoreWebMVC.Data;
+using DotNetCoreWebMVC.Services;
 
 namespace DotNetCoreWebMVC
 {
@@ -40,6 +41,7 @@ namespace DotNetCoreWebMVC
             services.AddDbContext<DotNetCoreWebMVCContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("DotNetCoreWebMVCContext")));
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }   
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
