@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DotNetCoreWebMVC.Services;
 using DotNetCoreWebMVC.Models;
+using DotNetCoreWebMVC.Models.ViewModel;
 
 namespace DotNetCoreWebMVC.Controllers
 {
@@ -8,10 +9,12 @@ namespace DotNetCoreWebMVC.Controllers
     {   
         
         private readonly SellerService _sellerService;
+        private readonly DepartmentService _departmentService;
 
-        public SellersController(SellerService sellerService)
+        public SellersController(SellerService sellerService, DepartmentService departmentService)
         {
             this._sellerService = sellerService;
+            this._departmentService = departmentService;
         }
         public IActionResult Index() 
         {
@@ -21,7 +24,9 @@ namespace DotNetCoreWebMVC.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departments = _departmentService.FindAll();
+            var viewModel = new SellerFormViewModel { Departments = departments };
+            return View(viewModel);
         }
 
         [HttpPost]

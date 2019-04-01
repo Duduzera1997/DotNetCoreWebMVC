@@ -6,8 +6,9 @@ using DotNetCoreWebMVC.Models;
 namespace DotNetCoreWebMVC.Services
 {
     public class SellerService
-    {   
+    {
         private readonly DotNetCoreWebMVCContext _context;
+
 
         // Construtor com injeção de dependência.
         public SellerService(DotNetCoreWebMVCContext context) 
@@ -23,7 +24,6 @@ namespace DotNetCoreWebMVC.Services
         // Método pra inserir um novo Seller;
         public void Insert(Seller seller)
         {
-            seller.Department = _context.Department.First();
             _context.Seller.Add(seller);
             _context.SaveChanges();
         }
