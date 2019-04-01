@@ -13047,28 +13047,30 @@
     ]
   },
   "packageFolders": {
-    "/home/superuser/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Desenvolvedor\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/superuser/Documentos/Projetos/C#/DotNetCoreWebMVC/DotNetCoreWebMVC.csproj",
+      "projectUniqueName": "C:\\Users\\Desenvolvedor\\Documents\\Courses\\DotNetCoreWebMVC\\DotNetCoreWebMVC.csproj",
       "projectName": "DotNetCoreWebMVC",
-      "projectPath": "/home/superuser/Documentos/Projetos/C#/DotNetCoreWebMVC/DotNetCoreWebMVC.csproj",
-      "packagesPath": "/home/superuser/.nuget/packages/",
-      "outputPath": "/home/superuser/Documentos/Projetos/C#/DotNetCoreWebMVC/obj/",
+      "projectPath": "C:\\Users\\Desenvolvedor\\Documents\\Courses\\DotNetCoreWebMVC\\DotNetCoreWebMVC.csproj",
+      "packagesPath": "C:\\Users\\Desenvolvedor\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Desenvolvedor\\Documents\\Courses\\DotNetCoreWebMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/superuser/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Desenvolvedor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

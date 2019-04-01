@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DotNetCoreWebMVC.Migrations
 {
     [DbContext(typeof(DotNetCoreWebMVCContext))]
-    [Migration("20190331025245_OtherEntities")]
+    [Migration("20190401124213_OtherEntities")]
     partial class OtherEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
