@@ -23,6 +23,7 @@ namespace DotNetCoreWebMVC.Services
         // Método pra inserir um novo Seller;
         public void Insert(Seller seller)
         {
+            seller.Department = _context.Department.First();
             _context.Seller.Add(seller);
             _context.SaveChanges();
         }
