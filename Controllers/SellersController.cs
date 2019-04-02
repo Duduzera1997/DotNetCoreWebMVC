@@ -67,8 +67,15 @@ namespace DotNetCoreWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            await _sellerService.RemoveAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _sellerService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegratyException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -78,7 +85,7 @@ namespace DotNetCoreWebMVC.Controllers
                 return RedirectToAction(nameof(Error), new { message = "ID Not Provided" });
             }
 
-            var seller =  await _sellerService.FindByIdAsync(id.Value);
+            var seller = await _sellerService.FindByIdAsync(id.Value);
 
             if (seller == null)
             {
