@@ -8,6 +8,7 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190401124158_OtherEntities.cs" />
     <Compile Remove="Migrations\20190401124158_OtherEntities.Designer.cs" />
+    <Compile Remove="Views\Sellers\Details.cshtml.cs" />
   </ItemGroup>
 
 
@@ -18,4 +19,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Sellers\Delete.html" />
+    <None Remove="Views\Sellers\Delete.chtml" />
+  </ItemGroup>
 </Project>
