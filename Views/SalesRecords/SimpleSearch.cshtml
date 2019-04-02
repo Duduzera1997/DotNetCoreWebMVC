@@ -5,23 +5,20 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-        <form class="navbar-form navbar-left" role="search">
+        <form class="form-inline" role="search">
             <div class="form-group">
-                <div class="form-group">
-                    <label for="minDate">Min Date</label>
-                    <input type="date" class="form-control" name="minDate" value=@ViewData["minDate"] />
-                </div>
-                <div class="form-group">
-                    <label for="maxDate">Max Date</label>
-                    <input type="date" class="form-control" name="maxDate" value=@ViewData["maxDate"] />
-                </div>
+                <label for="minDate" class="navbar-text mr-sm-2">Min Date:</label>
+                <input type="date" name="minDate" class="form-control mr-sm-2" value=@ViewData["minDate"] />
+                <label for="maxDate" class="navbar-text mr-sm-2">Max Date:</label>
+                <input type="date" name="maxDate" class="form-control mr-sm-2" value=@ViewData["maxDate"] />
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Filter</button>
             </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
         </form>
     </div>
 </nav>
+<br />
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Total sales = R$ @Model.Sum(obj => obj.Amount).ToString("F2") ;)</h3>
