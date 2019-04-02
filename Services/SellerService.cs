@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreWebMVC.Models;
 using DotNetCoreWebMVC.Services.Exceptions;
@@ -12,39 +13,41 @@ namespace DotNetCoreWebMVC.Services
         private readonly DotNetCoreWebMVCContext _context;
 
 
-        // Construtor com injeção de dependência.
-        public SellerService(DotNetCoreWebMVCContext context) 
+        // Construtor com inje??o de depend¨ºncia.
+        public SellerService(DotNetCoreWebMVCContext context)
         {
             this._context = context;
         }
 
-        // Método pra buscar todos os Sellers;
-        public List<Seller> FindAll() {
-            return _context.Seller.ToList();
+        // M¨¦todo pra buscar todos os Sellers;
+        public async Task<List<Seller>> FindAllAsync()
+        {
+            return await _context.Seller.ToListAsync();
         }
 
-        // Método pra inserir um novo Seller;
-        public void Insert(Seller seller)
+        // M¨¦todo pra inserir um novo Seller;
+        public async Task InsertAsync(Seller seller)
         {
             _context.Seller.Add(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public Seller FindById(int id)
+        public async Task<Seller> FindByIdAsync(int id)
         {
-            return _context.Seller.Include(seller => seller.Department).FirstOrDefault(seller => seller.Id == id);
+            return await _context.Seller.Include(seller => seller.Department).FirstOrDefaultAsync(seller => seller.Id == id);
         }
 
-        public void Remove(int id)
+        public async Task RemoveAsync(int id)
         {
-            var seller = _context.Seller.Find(id);
+            var seller = await _context.Seller.FindAsync(id);
             _context.Seller.Remove(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Seller seller)
+        public async Task UpdateAsync(Seller seller)
         {
-            if (!_context.Seller.Any(x => x.Id == seller.Id))
+            bool hasAny = await _context.Seller.AnyAsync(x => x.Id == seller.Id);
+            if (!hasAny)
             {
                 throw new NotFoundException("ID Not Found!");
             }
@@ -52,7 +55,7 @@ namespace DotNetCoreWebMVC.Services
             try
             {
                 _context.Update(seller);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException e)
             {

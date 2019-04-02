@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using DotNetCoreWebMVC.Models;
 
 namespace DotNetCoreWebMVC.Services
@@ -10,16 +12,16 @@ namespace DotNetCoreWebMVC.Services
 
         private readonly DotNetCoreWebMVCContext _context;
 
-        // Construtor com inje玢o de depend阯cia.
+        // Construtor com injeção de dependência.
         public DepartmentService(DotNetCoreWebMVCContext context)
         {
             this._context = context;
         }
 
-        // M閠odo pra buscar todos os Departaments Ordenados;
-        public List<Department> FindAll()
+        // Método pra buscar todos os Departaments Ordenados;
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
 
     }
