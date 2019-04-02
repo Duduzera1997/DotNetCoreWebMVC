@@ -23,4 +23,7 @@
     <None Remove="Views\Sellers\Delete.html" />
     <None Remove="Views\Sellers\Delete.chtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Exceptions\" />
+  </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DotNetCoreWebMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using DotNetCoreWebMVC.Models;
+using DotNetCoreWebMVC.Services.Exceptions;
 
 namespace DotNetCoreWebMVC.Services
 {
@@ -39,6 +40,24 @@ namespace DotNetCoreWebMVC.Services
             var seller = _context.Seller.Find(id);
             _context.Seller.Remove(seller);
             _context.SaveChanges();
+        }
+
+        public void Update(Seller seller)
+        {
+            if (!_context.Seller.Any(x => x.Id == seller.Id))
+            {
+                throw new NotFoundException("ID Not Found!");
+            }
+
+            try
+            {
+                _context.Update(seller);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
         }
     }
 }
